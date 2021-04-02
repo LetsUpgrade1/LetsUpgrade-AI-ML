@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetes Detection</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <h1>Diabetes Detection</h1>
+<br>
+ <div>
+    <h2>Enter the Diagnostic Measurements</h2>
+    <br>
+     <!-- Main Input For Receiving Query to our ML Model -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+            <input type="text" name="Pregnancies" placeholder="No. of Pregnancies" required="required"/>
+            </div>
+            <div class="form-group col-md-4">
+            <input type="text" name="Glucose" placeholder="Glucose" required="required"/>
+            </div>
+            <div class="form-group col-md-4">
+            <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+            <input type="text" name="SkinThickness" placeholder="SkinThickness" required="required"/>
+            </div>
+            <div class="form-group col-md-4">
+            <input type="text" name="Insulin" placeholder="Insulin" required="required"/>
+            </div>
+            <div class="form-group col-md-4">
+            <input type="text" name="BMI" placeholder="BMI" required="required"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <input type="text" name="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction" required="required"/>
+            </div>
+            <div class="form-group col-md-6">
+            <input type="text" name="Age" placeholder="Age" required="required"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary  btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+</html>
